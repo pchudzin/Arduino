@@ -23,17 +23,25 @@ void setup() {
 }
  
 void loop() {
-    digitalWrite(DISP_1, HIGH); 
-    digitalWrite(DISP_2, LOW); 
-    digits(9); 
-    delay(1000);
-    digitalWrite(DISP_1, LOW); 
-    digitalWrite(DISP_2, HIGH); 
-    digits(6); 
-    delay(1000);
+  
+ for( int i = 0; i < 6; i++ ) { 
+  for ( int j = 0; j < 10; j++ ) {  
+    for( int k = 0; k < 100; k++ ) {  // time manipulation, 100 * (5 + 5) ms = 1 sec
+     digitalWrite(DISP_1,HIGH);  
+     digitalWrite(DISP_2,LOW);  
+     display_digits(i);            
+     delay(5);
+     digitalWrite(DISP_1,LOW);
+     digitalWrite(DISP_2,HIGH);  
+     display_digits(j); 
+     delay(5);
+    }
+  }
+ }  
+ 
 }
  
-void digits(int digit) {
+void display_digits(byte digit) {
   switch (digit) {
     case 0:
         digitalWrite(SEG_A, HIGH);
@@ -136,13 +144,6 @@ void digits(int digit) {
     break;
   
     default: 
-      digitalWrite(SEG_A, HIGH);
-      digitalWrite(SEG_B, LOW);
-      digitalWrite(SEG_C, LOW);
-      digitalWrite(SEG_D, HIGH);
-      digitalWrite(SEG_E, LOW);
-      digitalWrite(SEG_F, LOW);
-      digitalWrite(SEG_G, HIGH);
     break;
   }
 }
