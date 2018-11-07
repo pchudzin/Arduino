@@ -5,7 +5,10 @@
 #define SEG_F 6
 #define SEG_A 7
 #define SEG_G 8
- 
+
+#define DISP_1 9
+#define DISP_2 10
+
 void setup() {
   pinMode(SEG_A, OUTPUT);
   pinMode(SEG_B, OUTPUT);
@@ -14,15 +17,20 @@ void setup() {
   pinMode(SEG_E, OUTPUT);
   pinMode(SEG_F, OUTPUT);
   pinMode(SEG_G, OUTPUT);
+
+  pinMode(DISP_1, OUTPUT);
+  pinMode(DISP_2, OUTPUT);
 }
  
 void loop() {
-  int i = 0;
-
-  for (i = 0; i < 10; i++) {
-    digits(i); 
-    delay(600); 
-  }
+    digitalWrite(DISP_1, HIGH); 
+    digitalWrite(DISP_2, LOW); 
+    digits(9); 
+    delay(1000);
+    digitalWrite(DISP_1, LOW); 
+    digitalWrite(DISP_2, HIGH); 
+    digits(6); 
+    delay(1000);
 }
  
 void digits(int digit) {
