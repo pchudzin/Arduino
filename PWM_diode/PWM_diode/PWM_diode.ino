@@ -14,7 +14,7 @@ void loop() {
  
  if ( (impletion < 255) && (fade_in == true) ) { 
   impletion += change;
- } else{
+ } else {
   impletion -= change;
  }
  if( (impletion == 255) && (fade_in == true) ){
